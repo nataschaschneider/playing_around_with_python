@@ -1,0 +1,18 @@
+def BMI():
+        weight = float(input("""Please enter your weight in kg (e.g. 52.5):
+>"""))
+        height = float(input("""Please enter your height in m (e.g. 1.75):
+>"""))
+        bmi = round(weight/(height**2))
+        def weight_class(bmi):
+                if bmi < 18.5:
+                        return("underweight")
+                elif bmi < 24.9:
+                        return("normal weight")
+                elif bmi < 29.9:
+                        return("overweight")
+                else:
+                        return("obese")
+        print(f"""Your BMI is {bmi}.
+This means you are {weight_class(bmi)}""")
+BMI()
