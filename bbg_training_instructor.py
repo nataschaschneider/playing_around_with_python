@@ -47,7 +47,6 @@ def countdown(t):
 
 
 def bbg():
-    print("\nToday's workout is:", df.loc[d, "Workout"])
     print("\nUp next...\n")
     time.sleep(2)
     for item in circuit1:
@@ -80,6 +79,7 @@ def bbg_recovery():
     time.sleep(2)
 
 
+print("\nToday's workout is:", df.loc[d, "Workout"])
 if rec == "yes":
     bbg()
     print("Rest")
