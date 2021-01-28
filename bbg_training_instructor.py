@@ -26,12 +26,12 @@ while True:
     break
 day = int(day)
 
-d = day-1
-selection = df.iloc[d]
-circuit1 = df.iloc[d, 2:6]
-circuit2 = df.iloc[d, 6:10]
-recovery = df.iloc[d, 2:10]
-rec = df.loc[d, "Rest"]
+df_line = day-1
+selection = df.iloc[df_line]
+circuit1 = df.iloc[df_line, 2:6]
+circuit2 = df.iloc[df_line, 6:10]
+recovery = df.iloc[df_line, 2:10]
+rec = df.loc[df_line, "Rest"]
 
 
 # functions
