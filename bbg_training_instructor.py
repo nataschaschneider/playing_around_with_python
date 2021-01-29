@@ -13,19 +13,19 @@ bbg_data = "C:/Users/nschn/Documents/python_code/bbg_data.csv"
 df = pd.read_csv(bbg_data)
 
 # input and variables
-day = input("Please enter the day (number) of your exercise programme and confirm by pressing ENTER:")
-while True:
+day = input("Please enter the day (number) of your exercise programme and confirm by pressing ENTER:\n")
+while isinstance(day, str):
     try:
-        value = int(day)
-    except ValueError:
+        int(day)
+    except ValueError or False:
         day = input("Please enter a VALID day (number) of your exercise programme and confirm by pressing ENTER:")
         continue
-    if not (0 < int(day) < 6):
+    if not 0 < int(day) < 6:
         day = input("Please enter a VALID day (number) of your exercise programme and confirm by pressing ENTER:")
         continue
-    break
-day = int(day)
-
+    else:
+        day = int(day)
+        break
 df_line = day-1
 selection = df.iloc[df_line]
 circuit1 = df.iloc[df_line, 2:6]
@@ -44,50 +44,46 @@ def countdown(t):
         print(timer, end="\r")
         time.sleep(1)
         t -= 1
+    return("00:00")
 
 
 def bbg():
-    print("\nUp next...\n")
+    print("Up next...\n")
     time.sleep(2)
     for item in circuit1:
         print(item)
     time.sleep(2)
-    countdown(7*60)
-    print("\nCircuit completed.\n")
+    print(countdown(10), "\nCircuit completed.\n")
     time.sleep(2)
     print("Rest")
     time.sleep(2)
-    countdown(30)
-    print("\nUp next...\n")
+    print(countdown(5), "\n")
+    print("Up next...\n")
     time.sleep(2)
     for item in circuit2:
         print(item)
     time.sleep(2)
-    countdown(7*60)
-    print("\nCircuit completed.\n")
+    print(countdown(10), "\nCircuit completed.\n")
     time.sleep(2)
 
 
 def bbg_recovery():
-    print("\nToday's workout is:", df.loc[d, "Workout"])
-    print("\nUp next...\n")
+    print("Up next...\n")
     time.sleep(2)
     for item in recovery:
         print(item)
     time.sleep(2)
-    print("\nThe recovery workout is finished once all items have been completed.\n")
-    time.sleep(2)
+    input("\nThe recovery workout is finished once all items have been completed.\nPress ENTER once you are done.\n")
 
-
-print("\nToday's workout is:", df.loc[d, "Workout"])
+print("\nToday's workout is:", df.loc[df_line, "Workout"], "\n")
+time.sleep(2)
 if rec == "yes":
     bbg()
     print("Rest")
     time.sleep(2)
-    countdown(30)
+    print(countdown(5), "\n")
     bbg()
-    print("Finished. Well done!")
+    input("Finished. Well done!\nPress Enter to close.")
 else:
     bbg_recovery()
-    input("Press ENTER once you are done.\n")
-    print("Finished. Well done!")
+    input("Finished. Well done!\nPress Enter to close.")
