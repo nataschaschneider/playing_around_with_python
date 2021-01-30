@@ -35,7 +35,7 @@ def play():
     while letter not in alphabet:
         letter = input("That's not right. Please enter the required letter and confirm by pressing ENTER:\n")
         letter = letter.upper()
-        continue
+        continue # you don't need a "continue" at the end of a loop. Doppelt gemoppelt as we Germans say. 
     else:
         pass
     # retrieving answers
@@ -47,11 +47,11 @@ game = input("\nReady to play (y/n)? Please confirm by pressing ENTER.\n")
 while game.lower() != "n":
     if game.lower() != "y":
         game = input("I did not understand your input. Ready to play again (y/n)? Please confirm by pressing ENTER.\n")
-        continue
+        continue # unnecessary continue as well
     elif game.lower() == "y":
         play()
         game = input("\nReady to play again (y/n)? Please confirm by pressing ENTER.\n")
-        continue
+        continue # yup, you guessed it :) 
 else:
     pass
 input("Thank you for playing! Press ENTER to close.")
