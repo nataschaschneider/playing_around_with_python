@@ -4,6 +4,21 @@
 import pandas as pd
 from tabulate import tabulate
 
+
+# functions
+def play():
+    letter = input("Please enter the required letter and confirm by pressing ENTER:\n")
+    letter = letter.upper()
+    while letter not in alphabet:
+        letter = input("That's not right. Please enter the required letter and confirm by pressing ENTER:\n")
+        letter = letter.upper()
+    else:
+        pass
+    # retrieving answers
+    winning_answers = answer_df.loc[[letter], category_list]
+    print(tabulate(winning_answers, headers=category_list, tablefmt='fancy_grid'))
+
+
 # program data
 category_answers = "C:/Users/nschn/Documents/python_code/city_country_river_winner_data_20210129.csv"
 answer_df = pd.read_csv(category_answers)
@@ -26,21 +41,7 @@ while not all(x in program_categories for x in category_list):
 else:
     pass
 
-
 # playing the game
-def play():
-    letter = input("Please enter the required letter and confirm by pressing ENTER:\n")
-    letter = letter.upper()
-    while letter not in alphabet:
-        letter = input("That's not right. Please enter the required letter and confirm by pressing ENTER:\n")
-        letter = letter.upper()
-    else:
-        pass
-    # retrieving answers
-    winning_answers = answer_df.loc[[letter], category_list]
-    print(tabulate(winning_answers, headers=category_list, tablefmt='fancy_grid'))
-
-
 game = input("\nReady to play (y/n)? Please confirm by pressing ENTER.\n")
 while game.lower() != "n":
     if game.lower() != "y":
